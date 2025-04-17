@@ -1,6 +1,8 @@
 import express from "express"
 import http from "http"
-import cors from "cors"
+import cors from "cors";
+import serviceRouter from "./routes/service.route.js"
+
 
 const app = express();
 const server = http.createServer(app)
@@ -15,6 +17,7 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 
 // Basic route
+app.use("/api/service",serviceRouter)
 
 
 // Error handling middleware
