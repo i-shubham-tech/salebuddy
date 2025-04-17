@@ -54,3 +54,12 @@ export const update_image = async (id, serviceLogo) => {
         throw new Error(`Error in DB updating image service: ${error.message}`);
     }
 };
+
+export const delete_Service = async (id) => {
+    try {
+        const [result] = await pool.execute('DELETE FROM services WHERE id = ?', [id]);
+        return result.affectedRows > 0;
+    } catch (error) {
+        throw new Error(`Error in DB deleting service: ${error.message}`);
+    }
+};

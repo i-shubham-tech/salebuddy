@@ -83,3 +83,14 @@ export const editLogo = async (req, res) => {
     }
    
 }
+export const deleteService = async (req, res) => {
+    try {
+       
+        const {id:serviceID} = req.params;
+        const response=await delete_Service(serviceID)
+        res.status(201).json({ message: "service deleted successfully", status: true })
+    } catch (error) {
+        res.status(500).json({ message: "Internal server error in delete action", status: false })
+
+    }
+}

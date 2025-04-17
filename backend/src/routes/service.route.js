@@ -8,6 +8,8 @@ router.post("/insertService", upload.single("Logo"), insertService);
 router.get("/getServices", getServices);
 router.put("/editService",editService)
 router.put("/editLogo",upload.single("Logo"),editLogo)
+router.delete("/deleteService/:id",deleteService)
+
 
 
 
