@@ -5,5 +5,6 @@ import upload from "../config/multer.config.js";
 const router = express.Router();
 
 router.post("/insertService", upload.single("Logo"), insertService);
+router.get("/getServices", getServices);
 
 export default router;
