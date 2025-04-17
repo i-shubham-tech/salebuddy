@@ -69,3 +69,17 @@ export const editService = async (req, res) => {
 
     }
 }
+export const editLogo = async (req, res) => {
+    try {
+        const {ID:serviceID}=req.body;
+        const {filename}=req.file;
+
+        const response=await update_image(serviceID,filename)
+        res.status(201).json({message:"Logo edited sucessfully",status:true})
+    } catch (error) {
+        console.log("Error in edit image action",error)
+        res.status(500).json({message:"Internal server error",status:false})
+
+    }
+   
+}

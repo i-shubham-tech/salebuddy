@@ -43,3 +43,14 @@ export const update_Service = async (id, serviceType, serviceName, serviceStatus
     }
 };
 
+export const update_image = async (id, serviceLogo) => {
+    try {
+        const [result] = await pool.execute(
+            'UPDATE services SET service_logo = ? WHERE id = ?',
+            [serviceLogo, id]
+        );
+        return result.affectedRows > 0;
+    } catch (error) {
+        throw new Error(`Error in DB updating image service: ${error.message}`);
+    }
+};
