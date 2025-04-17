@@ -1,7 +1,9 @@
 import express from "express"
 import http from "http"
 import cors from "cors";
-import serviceRouter from "./routes/service.route.js"
+import serviceRouter from "./routes/service.route.js";
+import brandRouter from "./routes/brand.route.js"
+
 
 
 const app = express();
@@ -18,6 +20,8 @@ app.use(express.urlencoded({ extended: true }));
 
 // Basic route
 app.use("/api/service",serviceRouter)
+app.use("/api/brand",)
+
 
 
 // Error handling middleware
