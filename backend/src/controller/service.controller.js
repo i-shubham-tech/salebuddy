@@ -58,3 +58,14 @@ export const getServices = async (req, res) => {
     }
 
 }
+export const editService = async (req, res) => {
+    try {
+        const {service_id,service_type,service_name,service_status} = req.body;
+        const response=await update_Service(service_id,service_type,service_name,service_status)
+        console.log(response)
+        res.status(201).json({ message: "service updated successfully", status: true })
+    } catch (error) {
+        res.status(500).json({ message: "Internal server error in edit action", status: false })
+
+    }
+}

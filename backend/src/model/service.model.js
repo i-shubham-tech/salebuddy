@@ -30,3 +30,16 @@ export const insert_Service = async (serviceType, serviceName, serviceLogo, serv
         throw new Error(`Error in DB inserting service: ${error.message}`);
     }
 };
+
+export const update_Service = async (id, serviceType, serviceName, serviceStatus) => {
+    try {
+        const [result] = await pool.execute(
+            'UPDATE services SET service_type = ?, service_name = ?, service_status = ? WHERE id = ?',
+            [serviceType, serviceName, serviceStatus, id]
+        );
+        return result.affectedRows > 0;
+    } catch (error) {
+        throw new Error(`Error in DB updating service: ${error.message}`);
+    }
+};
+

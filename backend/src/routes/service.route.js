@@ -6,5 +6,7 @@ const router = express.Router();
 
 router.post("/insertService", upload.single("Logo"), insertService);
 router.get("/getServices", getServices);
+router.put("/editService",editService)
+
 
 export default router;
