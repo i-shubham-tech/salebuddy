@@ -10,3 +10,12 @@ export const get_Product = async () => {
         console.log("Error in product model-get_Product ", error)
     }
 }
+
+export const insert_Product = async (service_id, brand_id, product_name, product_description, product_logo) => {
+    try {
+        const [result] = await pool.execute("insert into products (service_id, brand_id, product_name, product_description, product_logo) values(?,?,?,?,?)", [service_id, brand_id, product_name, product_description, product_logo]);
+        return result.insertId;
+    } catch (error) {
+        console.log("Error in product model-insert_Product ", error)
+    }
+}
