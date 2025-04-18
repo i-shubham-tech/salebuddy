@@ -3,6 +3,7 @@ import http from "http"
 import cors from "cors";
 import serviceRouter from "./routes/service.route.js";
 import brandRouter from "./routes/brand.route.js"
+import productRouter from "./routes/product.route.js";
 
 
 
@@ -21,6 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 // Basic route
 app.use("/api/service",serviceRouter)
 app.use("/api/brand",brandRouter)
+app.use("/api/product",productRouter)
 
 
 
