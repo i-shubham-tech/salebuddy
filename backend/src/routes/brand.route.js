@@ -6,6 +6,8 @@ import { insertBrand } from "../controller/brand.controller.js";
 const router=express.Router();
 
 router.post("/insertBrand",upload.single("Logo"),insertBrand)
+router.get("/getBrand",getBrand)
+
 
 
 

@@ -20,3 +20,19 @@ export const insertBrand = async (req, res) => {
 
 
 }
+export const getBrand=async(req,res)=>{
+    try {
+        
+        const response=await get_All_Brand();
+        if(response){
+            res.status(201).json({result:response,status:true})
+        }
+        
+    } catch (error) {
+        res.status(500).json({message:"Internal Server Error",status:false})
+        console.log("Error in brand action getBrand",error)
+    }
+
+    
+
+}
