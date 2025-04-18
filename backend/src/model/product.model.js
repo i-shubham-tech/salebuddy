@@ -1,4 +1,4 @@
-
+import pool from "../config/db.js";
 export const get_Product = async () => {
     try {
         const [result] = await pool.execute(`
@@ -38,5 +38,14 @@ export const update_Product_Image = async (product_id, product_logo) => {
 
     } catch (error) {
         console.log("Error in brand model updateBrandImage", error);
+    }
+}
+
+export const delete_Product = async (produt_id) => {
+    try {
+        const [result] = await pool.execute("delete from products where product_id=?", [produt_id]);
+        return result;
+    } catch (error) {
+        console.log("Error in product model-Delete_Product ", error)
     }
 }

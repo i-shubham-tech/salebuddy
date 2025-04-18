@@ -63,3 +63,20 @@ export const updateProductL=async (req,res)=>{
 
     }
 }
+
+export const deleteProduct=async (req,res)=>{
+    try {
+
+        
+        const {product_id}=req.params
+        const response=await delete_Product(product_id);
+        if(response){
+            res.status(200).json({message:"Product deleted successfully",status:true})
+        }
+        
+    } catch (error) {
+        console.log("error in product-action-deleteProduct",error)
+        res.status(500).json({result:[],message:"Internal server error",status:true})
+
+    }
+}
