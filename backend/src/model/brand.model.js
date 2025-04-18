@@ -50,3 +50,12 @@ export const update_Brand_Image = async (brand_id, brand_logo) => {
         console.log("Error in brand model updateBrandImage", error);
     }
 }
+export const delete_Brand = async (brand_id) => {
+    try {
+        const [result] =await pool.execute("delete from brands where brand_id=?", [brand_id]);
+        return result.affectedRows > 0;
+
+    } catch (error) {
+        console.log("Error in brand model deleteBrand", error);
+    }
+}
