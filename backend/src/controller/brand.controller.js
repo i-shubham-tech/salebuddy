@@ -50,6 +50,21 @@ export const updateBrand=async(req,res)=>{
         res.status(500).json({message:"Internal Server Error",status:false})
         console.error("Error in brand action updateBrand",error)
     }
+}
+
+export const updateLogo=async(req,res)=>{
+    try {
+        const {ID:brand_id}=req.body;
+        const {filename:brand_logo}=req.file
+        const response=await update_Brand_Image(brand_id,brand_logo);
+        if(response){
+            res.status(200).json({message:"Brand logo updated succesfully",status:true})
+        }
+        
+    } catch (error) {
+        res.status(500).json({message:"Internal Server Error",status:false})
+        console.log("Error in brand action updateBrandLogo",error)
+    }
 
     
 

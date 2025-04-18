@@ -8,6 +8,8 @@ const router=express.Router();
 router.post("/insertBrand",upload.single("Logo"),insertBrand)
 router.get("/getBrand",getBrand)
 router.put("/updateBrand",updateBrand)
+router.put("/updateLogo",upload.single("Logo"),updateLogo)
+
 
 
 

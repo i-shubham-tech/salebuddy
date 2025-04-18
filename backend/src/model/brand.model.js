@@ -40,3 +40,13 @@ export const update_Brand_Data = async (brand_id, brand_name) => {
         console.log("Error in brand model updateBrandData", error);
     }
 }
+
+export const update_Brand_Image = async (brand_id, brand_logo) => {
+    try {
+        const [result] =await pool.execute("update brands set brand_logo=? where brand_id=?", [brand_logo, brand_id]);
+        return result.affectedRows > 0;
+
+    } catch (error) {
+        console.log("Error in brand model updateBrandImage", error);
+    }
+}
