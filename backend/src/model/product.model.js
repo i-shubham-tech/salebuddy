@@ -29,3 +29,14 @@ export const update_ProductD = async (product_id, service_id, brand_id, product_
         console.log("Error in product model-update_ProductD ", error)
     }
 }
+
+export const update_Product_Image = async (product_id, product_logo) => {
+    console.log(product_id)
+    try {
+        const [result] = await pool.execute("update products set product_logo=? where product_id=?", [product_logo, product_id]);
+        return result.affectedRows > 0;
+
+    } catch (error) {
+        console.log("Error in brand model updateBrandImage", error);
+    }
+}
