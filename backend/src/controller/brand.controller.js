@@ -36,3 +36,21 @@ export const getBrand=async(req,res)=>{
     
 
 }
+
+
+export const updateBrand=async(req,res)=>{
+    try {
+        const {brand_id,brand_name}=req.body;
+        const response=await update_Brand_Data(brand_id,brand_name);
+        if(response){
+            res.status(200).json({message:"Brand updated succesfully",status:true})
+        }
+        
+    } catch (error) {
+        res.status(500).json({message:"Internal Server Error",status:false})
+        console.error("Error in brand action updateBrand",error)
+    }
+
+    
+
+}
