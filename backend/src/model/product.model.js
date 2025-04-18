@@ -19,3 +19,13 @@ export const insert_Product = async (service_id, brand_id, product_name, product
         console.log("Error in product model-insert_Product ", error)
     }
 }
+
+export const update_ProductD = async (product_id, service_id, brand_id, product_name, product_description) => {
+    console.log(product_id, service_id, brand_id, product_name, product_description)
+    try {
+        const [result] = await pool.execute("update products set service_id=?, brand_id=?, product_name=?, product_description=? where product_id=?", [service_id, brand_id, product_name, product_description, product_id]);
+        return result.affectedRows > 0;
+    } catch (error) {
+        console.log("Error in product model-update_ProductD ", error)
+    }
+}

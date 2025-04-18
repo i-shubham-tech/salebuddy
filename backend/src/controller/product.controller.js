@@ -1,4 +1,4 @@
-import { get_Product,insert_Product } from "../model/product.model.js";
+import { get_Product,insert_Product,update_ProductD } from "../model/product.model.js";
 
 export const getProduct=async (req,res)=>{
     try {
@@ -25,6 +25,23 @@ export const insertProduct=async (req,res)=>{
         
     } catch (error) {
         console.log("error in product-action-insertProduct",error)
+        res.status(500).json({result:[],message:"Internal server error",status:true})
+
+    }
+}
+
+
+export const updateProductD=async (req,res)=>{
+    try {
+        console.log(req.body)
+        const {product_id,service_id,brand_id,product_name,product_description}=req.body;
+        const response=await update_ProductD(product_id,service_id,brand_id,product_name,product_description);
+        if(response){
+            res.status(200).json({message:"Product updated successfully",status:true})
+        }
+        
+    } catch (error) {
+        console.log("error in product-action-updateProductD",error)
         res.status(500).json({result:[],message:"Internal server error",status:true})
 
     }
